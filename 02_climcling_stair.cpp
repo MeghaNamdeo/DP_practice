@@ -114,3 +114,42 @@ public:
 TC:O(n)
 SC:O(1)
 */
+
+---------------------------------------
+    Another method
+class Solution {
+public:
+    int climbStairs(int n) {
+       int i=n;
+       if(i==0)return 1;
+       if(i<0)return 0;
+       return climbStairs(i-1)+climbStairs(i-2);
+    }
+};//TC:O(2^n)
+//SC:O(n)
+
+
+-------------------------------------
+    //top down approach 
+class Solution {
+public:
+int climbStairs2(int n, vector<int>&dp) {
+        
+       int i=n;
+       if(i==0)return 1;
+       if(i<0)return 0;
+
+       if(dp[i]!=-1)return dp[i];
+
+
+       return dp[i]=climbStairs2(i-1,dp)+climbStairs2(i-2,dp);
+    }
+    int climbStairs(int n) {
+        
+       vector<int>dp(n+2,-1);
+
+
+       return climbStairs2(n,dp);
+    }
+};//TC:O(n)
+//SC:O(n)
